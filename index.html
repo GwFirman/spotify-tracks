@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Top Tracks</title>
+</head>
+<body>
+  <h1>My Spotify Top Tracks</h1>
+  <ul id="track-list"></ul>
+
+  <script>
+    // Ambil data dari serverless function
+    fetch('/api/spotify')
+      .then(response => response.json())
+      .then(data => {
+        const trackList = document.getElementById('track-list');
+        data.items.forEach(track => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${track.name} by ${track.artists.map(artist => artist.name).join(', ')}`;
+          trackList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+</body>
+</html>
