@@ -28,15 +28,7 @@ cd spotify-top-tracks
 #### 4. Set the appropriate scopes for the application (like user-top-read for fetching top tracks).
 
 
-### 3. Set Up Environment Variables
-In the root directory of your project, create a .env.local file to store the environment variables.
-
-```bash
-touch .env.local
-```
-
-
-### 4. Deploy with Vercel
+### 3. Deploy with Vercel
 #### 1. Go to Vercel.
 #### 2. Click on New Project and import the repository from GitHub.
 #### 3. Vercel will automatically detect the project configuration. You can just click Deploy.
