@@ -11,13 +11,25 @@
 
 <body>
 
-  <h1 class="text-4xl text-center my-4">My most streamed songs of the weeks</h1>
-  <div class="px-8 lg:px-16">
-    <ul id="track-list">
-      
-    </ul>
-   
-      </div>
+  <h1>My Spotify Top Tracks</h1>
+  <div class="collapse bg-base-200">
+    <input type="checkbox" />
+    <div class="collapse-title text-xl font-medium">My most streamed songs of the weeks</div>
+    <div class="collapse-content">
+
+      <ul id="track-list">
+        <!-- <li class="border border-neutral-content  border-1 rounded-md">
+          <div class="p-4 flex items-center">
+            <img id="cover" src="lego.jpeg" alt="Random Unsplash Image" class="rounded-md mr-4 size-20" />
+            <div class="text-xl">
+              <p class="font-bold" id="judul-lagu">Hallo</p>
+              <p id="nama-artis">Nama artis</p>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </div>
   <script>
     // Fetch data from your serverless function
     fetch('/api/spotify')
@@ -27,7 +39,7 @@
         data.items.forEach(track => {
           // Create list item element
           const listItem = document.createElement('li');
-          listItem.classList.add('border', 'border-neutral-content', 'border-2', 'rounded-md','mb-4');
+          listItem.classList.add('border', 'border-neutral-content', 'border-1', 'rounded-md');
   
           // Create the main div that wraps the content
           const divContainer = document.createElement('div');
@@ -42,7 +54,7 @@
   
           // Create the text container
           const textContainer = document.createElement('div');
-          textContainer.classList.add('text-md lg:text-xl');
+          textContainer.classList.add('text-xl');
   
           // Create the song title (judul-lagu)
           const songTitle = document.createElement('p');
