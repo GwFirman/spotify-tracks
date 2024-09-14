@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +8,84 @@
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
 
 </head>
+
 <body>
 
   <h1>My Spotify Top Tracks</h1>
   <div class="collapse bg-base-200">
     <input type="checkbox" />
-    <div class="collapse-title text-xl font-medium">Click me to show/hide content</div>
+    <div class="collapse-title text-xl font-medium">My most streamed songs of the weeks</div>
     <div class="collapse-content">
-     
-      <ul id="track-list"></ul>
+
+      <ul id="track-list">
+        <!-- <li class="border border-neutral-content  border-1 rounded-md">
+          <div class="p-4 flex items-center">
+            <img id="cover" src="lego.jpeg" alt="Random Unsplash Image" class="rounded-md mr-4 size-20" />
+            <div class="text-xl">
+              <p class="font-bold" id="judul-lagu">Hallo</p>
+              <p id="nama-artis">Nama artis</p>
+            </div>
+          </div>
+        </li> -->
+      </ul>
     </div>
   </div>
-
   <script>
+    // Fetch data from your serverless function
+    fetch('/api/spotify')
+      .then(response => response.json())
+      .then(data => {
+        const trackList = document.getElementById('track-list');
+        data.items.forEach(track => {
+          // Create list item element
+          const listItem = document.createElement('li');
+          listItem.classList.add('border', 'border-neutral-content', 'border-1', 'rounded-md');
+  
+          // Create the main div that wraps the content
+          const divContainer = document.createElement('div');
+          divContainer.classList.add('p-4', 'flex', 'items-center');
+  
+          // Create the image element
+          const img = document.createElement('img');
+          img.id = 'cover';
+          img.src = track.album.images[0].url; // Set image source from the API
+          img.alt = `Cover image for ${track.name}`;
+          img.classList.add('rounded-md', 'mr-4', 'size-20');
+  
+          // Create the text container
+          const textContainer = document.createElement('div');
+          textContainer.classList.add('text-xl');
+  
+          // Create the song title (judul-lagu)
+          const songTitle = document.createElement('p');
+          songTitle.id = 'judul-lagu';
+          songTitle.classList.add('font-bold');
+          songTitle.textContent = track.name; // Set song name from the API
+  
+          // Create the artist name (nama-artis)
+          const artistName = document.createElement('p');
+          artistName.id = 'nama-artis';
+          artistName.textContent = track.artists.map(artist => artist.name).join(', '); // Set artist names
+  
+          // Append song title and artist name to the text container
+          textContainer.appendChild(songTitle);
+          textContainer.appendChild(artistName);
+  
+          // Append the image and text container to the main div
+          divContainer.appendChild(img);
+          divContainer.appendChild(textContainer);
+  
+          // Append the div container to the list item
+          listItem.appendChild(divContainer);
+  
+          // Append the list item to the ul element
+          trackList.appendChild(listItem);
+        });
+      })
+      .catch(error => console.error('Error:', error));
+  </script>
+  
+  <!-- <script>
     // Ambil data dari serverless function
     fetch('/api/spotify')
       .then(response => response.json())
@@ -32,7 +98,8 @@
         });
       })
       .catch(error => console.error('Error:', error));
-  </script>
+  </script> -->
   <script src="https://cdn.tailwindcss.com"></script>
 </body>
+
 </html>
