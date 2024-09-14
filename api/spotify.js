@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
   const access_token = tokenData.access_token;
 
   // Gunakan access token untuk mendapatkan top tracks
-  const topTracksResponse = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=10&offset=0', {
+  const topTracksResponse = await fetch('https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=5&offset=0', {
     headers: {
       'Authorization': `Bearer ${access_token}`
     }
