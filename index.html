@@ -4,10 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Spotify Top Tracks</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
+
   <h1>My Spotify Top Tracks</h1>
-  <ul id="track-list"></ul>
+  <div class="collapse bg-base-200">
+    <input type="checkbox" />
+    <div class="collapse-title text-xl font-medium">Click me to show/hide content</div>
+    <div class="collapse-content">
+     
+      <ul id="track-list"></ul>
+    </div>
+  </div>
 
   <script>
     // Ambil data dari serverless function
@@ -23,5 +33,6 @@
       })
       .catch(error => console.error('Error:', error));
   </script>
+  <script src="https://cdn.tailwindcss.com"></script>
 </body>
 </html>
