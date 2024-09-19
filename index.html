@@ -23,8 +23,11 @@
     fetch('/api/spotify')
       .then(response => response.json())
       .then(data => {
+        
         const trackList = document.getElementById('track-list');
-        data.items.forEach(track => {
+        
+        const topTracksData = data.topTracksData;
+        topTracksData.items.forEach(track => {
           // Create list item element
           const listItem = document.createElement('li');
           listItem.classList.add('border', 'border-neutral-content', 'border-2', 'rounded-md','mb-4');
