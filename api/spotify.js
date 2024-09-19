@@ -39,11 +39,11 @@ module.exports = async (req, res) => {
 
   // Mengirim data top tracks ke frontend
   
-  // res.json(topTracksData);
+  res.json(topTracksData);
 
-  res.json({
-    currentPlayingData: currentPlayingData,
-    topTracksData: topTracksData
-  });
+  // res.json({
+  //   currentPlayingData: currentPlayingData,
+  //   topTracksData: topTracksData
+  // });
   
 };
