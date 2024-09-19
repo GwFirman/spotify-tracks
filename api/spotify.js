@@ -28,14 +28,10 @@ module.exports = async (req, res) => {
     }
   });
 
-  const currentPlayingResponse = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-    headers: {
-      'Authorization': `Bearer ${access_token}`
-    }
-  });
+  
 
   const topTracksData = await topTracksResponse.json();
-  const currentPlayingData = await currentPlayingResponse.json();
+  // const currentPlayingData = await currentPlayingResponse.json();
 
   // Mengirim data top tracks ke frontend
   
