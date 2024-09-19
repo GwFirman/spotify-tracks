@@ -35,37 +35,7 @@ fetch('/api/spotify')
       currentPlayingContainer.appendChild(textContainer);
 
       currentPlaying.appendChild(currentPlayingContainer);
-    } else {
-      // Jika tidak ada lagu yang sedang diputar
-      const currentPlayingContainer = document.createElement('div');
-      currentPlayingContainer.classList.add('p-2', 'lg:p-4', 'flex', 'items-center');
-
-      const img = document.createElement('img');
-      img.id = 'cover';
-      img.src = 'https://via.placeholder.com/150';
-      img.alt = 'Placeholder cover image';
-      img.classList.add('rounded-md', 'mr-4', 'lg:size-16', 'size-12');
-
-      const textContainer = document.createElement('div');
-      textContainer.classList.add('text-sm', 'lg:text-md');
-
-      const songTitle = document.createElement('p');
-      songTitle.id = 'judul-lagu';
-      songTitle.classList.add('font-medium');
-      songTitle.textContent = 'Listening to the voices in my head';
-
-      const artistName = document.createElement('p');
-      artistName.id = 'nama-artis';
-      artistName.textContent = 'Myself';
-
-      textContainer.appendChild(songTitle);
-      textContainer.appendChild(artistName);
-
-      currentPlayingContainer.appendChild(img);
-      currentPlayingContainer.appendChild(textContainer);
-
-      currentPlaying.appendChild(currentPlayingContainer);
-    }
+    } 
 
     // Mengambil data top tracks
     const topTracksData = data.topTracksData; // Sesuaikan nama objek sesuai dengan data yang dikirim dari API
