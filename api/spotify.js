@@ -35,6 +35,7 @@ module.exports = async (req, res) => {
   });
 
   const topTracksData = await topTracksResponse.json();
+  const currentPlayingData = await currentPlayingResponse.json();
 
   // Mengirim data top tracks ke frontend
   
