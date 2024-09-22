@@ -28,18 +28,26 @@ module.exports = async (req, res) => {
     }
   });
 
-  
+  const currentPlayingResponse = await fetch('https://api.spotify.com/v1/me/player/currently-playing', {
+    headers: {
+      'Authorization': 'Bearer ' + access_token
+    }
+  });
 
   const topTracksData = await topTracksResponse.json();
-  // const currentPlayingData = await currentPlayingResponse.json();
+  let currentPlayingData = null;
 
-  // Mengirim data top tracks ke frontend
-  
-  res.json(topTracksData);
+  if (currentPlayingResponse.status === 200) {
+    currentPlayingData = await currentPlayingResponse.json();
+  }
 
-  // res.json({
-  //   currentPlayingData: currentPlayingData,
-  //   topTracksData: topTracksData
-  // });
-  
+  // Gabungkan data top tracks dan currently playing dalam satu respons
+  const responseData = {
+    topTracks: topTracksData,
+    currentPlaying: currentPlayingData || "No track is currently being played" // Mengirimkan pesan jika tidak ada track yang sedang diputar
+  };
+
+  res.json(responseData);
+
+
 };
