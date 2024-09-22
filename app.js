@@ -67,8 +67,7 @@
           // Create the image element
           const img = document.createElement('img');
           img.id = 'cover';
-          img.src = 'https://via.placeholder.com/150'; // Set image source from the API
-          img.alt = `Cover image for ${currentPlaying.item.name}`;
+          img.src = 'https://via.placeholder.com/150'; // Set image source from the API\
           img.classList.add('rounded-md', 'mr-4', 'size-20');
 
           // Create the text container
